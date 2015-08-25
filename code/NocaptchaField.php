@@ -58,6 +58,12 @@ class NocaptchaField extends FormField {
     private $_captchaType;
     
     /**
+     * Optional Javascript Callback for Verified Captcha
+     * @var string
+     */
+    private $success_callback = false;
+    
+    /**
      * Creates a new Recaptcha 2 field.
      * @param {string} $name The internal field name, passed to forms.
      * @param {string} $title The human-readable field label.
@@ -196,6 +202,25 @@ class NocaptchaField extends FormField {
      */
     public function getSiteKey() {
         return self::config()->site_key;
+    }
+    
+    /**
+     * Sets the theme for this captcha
+     * @param {boolean} $value the name of the JavaScript Callback
+     * @return {NocaptchaField}
+     */
+    public function setJavascriptCallback($value = false) {
+        $this->success_callback = $value;
+        
+        return $this;
+    }
+    
+    /**
+     * Gets the callback for this captcha
+     * @return {string}
+     */
+    public function getJavascriptCallback() {
+	    return $this->success_callback;
     }
 }
 ?>
