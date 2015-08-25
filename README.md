@@ -46,5 +46,20 @@ $form->enableSpamProtection()
 	->setDescription("Please tick the box to prove you're a human and help us stop spam.");
 ```
 
+## Adding Optional Callback
+If you would like a Javascript Callback fired when the Captcha is successully answered enable the callabck first in PHP:
+```php
+$form->enableSpamProtection()
+	->fields()->fieldByName('Captcha')
+	->setJavascriptCallback(true);
+```
+You will also need to add the callback function to your page as per the Google Recpatcha 2.0 API
+```javascript
+var verifyCallback = function(response) {
+    //your function here
+}
+```
+
+
 ## Reporting an issue
 When you're reporting an issue please ensure you specify what version of SilverStripe you are using i.e. 3.1.3, 3.2beta, master etc. Also be sure to include any JavaScript or PHP errors you receive, for PHP errors please ensure you include the full stack trace. Also please include how you produced the issue. You may also be asked to provide some of the classes to aid in re-producing the issue. Stick with the issue, remember that you seen the issue not the maintainer of the module so it may take allot of questions to arrive at a fix or answer.
